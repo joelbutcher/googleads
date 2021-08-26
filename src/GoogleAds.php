@@ -4,7 +4,6 @@ namespace JoelButcher\GoogleAds;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
 use Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder;
-use Illuminate\Support\Traits\ForwardsCalls;
 
 class GoogleAds
 {

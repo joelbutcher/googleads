@@ -14,13 +14,12 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "googleads/google-ads-php": "^8.0",
-        "illuminate/support": "^8.0"
+        "php": ">=7.0 || >=8.0",
+        "googleads/google-ads-php": "^6.1.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^8.5.19"
     },
     "config": {
         "optimize-autoloader": true,

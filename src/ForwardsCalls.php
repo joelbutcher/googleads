@@ -5,6 +5,11 @@ namespace JoelButcher\GoogleAds;
 use BadMethodCallException;
 use Error;
 
+/**
+ * Helper trait ported from the official Laravel Open Source Library.
+ *
+ * @see https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Traits/ForwardsCalls.php
+ */
 trait ForwardsCalls
 {
     /**

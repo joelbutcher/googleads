@@ -3,6 +3,11 @@
 
 This changelog follows [the Keep a Changelog standard](https://keepachangelog.com).
 
+## [v2.0.0 (2021-08-27)](https://github.com/joelbutcher/googleads/compare/v1.2.0...v2.0.0)
+### Changes
+
+- Drop support for PHP < 7.3
+
 ## [v1.2.0 (2021-08-27)](https://github.com/joelbutcher/googleads/compare/v1.1.0...v1.2.0)
 
 ### Changes

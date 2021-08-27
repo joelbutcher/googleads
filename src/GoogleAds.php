@@ -5,6 +5,7 @@ namespace JoelButcher\GoogleAds;
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
 use Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder as V6ClientBuilder;
 use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder as V8ClientBuilder;
+use Google\Auth\FetchAuthTokenInterface;
 
 class GoogleAds
 {
@@ -65,7 +66,7 @@ class GoogleAds
      * @param  string  $customerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function setCustomerId(string $customerId): \JoelButcher\GoogleAds\GoogleAds
+    public function setCustomerId(string $customerId): GoogleAds
     {
         $this->customerId = $customerId;
 
@@ -78,7 +79,7 @@ class GoogleAds
      * @param  string  $refreshToken
      * @return \Google\Auth\FetchAuthTokenInterface
      */
-    protected function getTokenBuilder(string $refreshToken): \Google\Auth\FetchAuthTokenInterface
+    protected function getTokenBuilder(string $refreshToken): FetchAuthTokenInterface
     {
         return (new OAuth2TokenBuilder())
             ->withClientId($this->clientId)
@@ -131,7 +132,7 @@ class GoogleAds
      * @param  int|null  $linkedCustomerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function authorize(string $refreshToken, int $linkedCustomerId = null): \JoelButcher\GoogleAds\GoogleAds
+    public function authorize(string $refreshToken, int $linkedCustomerId = null): GoogleAds
     {
         $this->googleAdsClient = $this->buildClient($refreshToken, $linkedCustomerId);
 
@@ -152,9 +153,10 @@ class GoogleAds
      * Validate that the services has been propertly configured.
      *
      * @return void
+     *
      * @throws \JoelButcher\GoogleAds\ConfigException
      */
-    private function validateConfig()
+    private function validateConfig(): void
     {
         if (! $this->clientId) {
             static::throwNewConfigException('The Client ID has not been configured.');
@@ -181,12 +183,11 @@ class GoogleAds
      * Throws a config exception for the given message.
      *
      * @param string $message
-     *
      * @return void
      *
      * @throws \JoelButcher\GoogleAds\ConfigException
      */
-    protected static function throwNewConfigException(string $message)
+    protected static function throwNewConfigException(string $message): void
     {
         throw new ConfigException($message);
     }

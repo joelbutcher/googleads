@@ -61,7 +61,14 @@ class GoogleAds
     }
 
     /**
-     * Set the MCC ID of the customer to act on behalf of.
+     * Sets the linked customer ID for this client.
+     *
+     * This header is only required for methods that update the resources of an entity when
+     * permissioned via Linked Accounts in the Google Ads UI (AccountLink resource in the Google Ads
+     * API). Set this value to the customer ID of the data provider that updates the resources of
+     * the specified customer ID. It should be set without dashes, for example: 1234567890 instead
+     * of 123-456-7890. Read https://support.google.com/google-ads/answer/7365001 to learn more
+     * about Linked Accounts.
      *
      * @param  int|null  $loginCustomerId
      * @return \JoelButcher\GoogleAds\GoogleAds

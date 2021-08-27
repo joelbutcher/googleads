@@ -3,7 +3,8 @@
 namespace JoelButcher\GoogleAds;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
-use Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder;
+use Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder as V6ClientBuilder;
+use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder as V8ClientBuilder;
 
 class GoogleAds
 {
@@ -12,7 +13,7 @@ class GoogleAds
     /**
      * The underlying GGoogle Ads client instance.
      *
-     * @var \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|null
+     * @var \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient|null
      */
     private $googleAdsClient = null;
 
@@ -90,11 +91,12 @@ class GoogleAds
      * Get the Google Ads Client Builder for a given refresh token.
      *
      * @param  string  $refreshToken
-     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder
+     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder
      */
-    protected function getClientBuilder(string $refreshToken): \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder
+    protected function getClientBuilder(string $refreshToken)
     {
-        return (new GoogleAdsClientBuilder())
+        $class = PHP_VERSION > 7.2 && class_exists(V8ClientBuilder::class) ? V8ClientBuilder::class : V6ClientBuilder::class;
+        return (new $class())
             ->withOAuth2Credential($this->getTokenBuilder($refreshToken))
             ->withDeveloperToken($this->developerToken);
     }
@@ -104,9 +106,9 @@ class GoogleAds
      *
      * @param  string  $refreshToken
      * @param  int|null  $linkedCustomerId
-     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient
+     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
      */
-    protected function buildClient(string $refreshToken, int $linkedCustomerId = null): \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient
+    protected function buildClient(string $refreshToken, int $linkedCustomerId = null)
     {
         $this->validateConfig();
 

@@ -3,7 +3,9 @@
 namespace JoelButcher\GoogleAds;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
+use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient;
 use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder;
+use Google\Auth\FetchAuthTokenInterface;
 
 class GoogleAds
 {
@@ -94,9 +96,7 @@ class GoogleAds
      */
     protected function getClientBuilder(string $refreshToken): GoogleAdsClientBuilder
     {
-        $class = PHP_VERSION > 7.2 && class_exists(V8ClientBuilder::class) ? V8ClientBuilder::class : V6ClientBuilder::class;
-
-        return (new $class())
+        return (new GoogleAdsClientBuilder())
             ->withOAuth2Credential($this->getTokenBuilder($refreshToken))
             ->withDeveloperToken($this->developerToken);
     }
@@ -108,7 +108,7 @@ class GoogleAds
      * @param  int|null  $linkedCustomerId
      * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
      */
-    protected function buildClient(string $refreshToken, int $linkedCustomerId = null): GoogleAdsClientBuilder
+    protected function buildClient(string $refreshToken, int $linkedCustomerId = null): GoogleAdsClient
     {
         $this->validateConfig();
 

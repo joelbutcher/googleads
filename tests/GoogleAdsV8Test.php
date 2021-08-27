@@ -16,6 +16,10 @@ class GoogleAdsV8Test extends TestCase
 {
     public function test_it_throws_google_ads_exception_if_not_authorized()
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds([]);
 
         $this->expectException(GoogleAdsException::class);
@@ -29,6 +33,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_client_config_options_without_linked_customer_id($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token');
@@ -50,6 +58,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_client_config_options_with_linked_customer_id($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -71,6 +83,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_account_link_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -83,6 +99,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_campaign_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -95,6 +115,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_ad_group_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -107,6 +131,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_ad_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -119,6 +147,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_keyword_plan_campaign_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);
@@ -131,6 +163,10 @@ class GoogleAdsV8Test extends TestCase
      */
     public function test_it_can_retrieve_keyword_plan_ad_group_service_client($config)
     {
+        if (PHP_VERSION < 7.3) {
+            static::markTestSkipped('Skipping for PHP < 7.3');
+        }
+
         $googleAds = new GoogleAds($config);
 
         $googleAds->authorize('token', 12345678);

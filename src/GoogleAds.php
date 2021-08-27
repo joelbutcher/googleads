@@ -96,6 +96,7 @@ class GoogleAds
     protected function getClientBuilder(string $refreshToken)
     {
         $class = PHP_VERSION > 7.2 && class_exists(V8ClientBuilder::class) ? V8ClientBuilder::class : V6ClientBuilder::class;
+
         return (new $class())
             ->withOAuth2Credential($this->getTokenBuilder($refreshToken))
             ->withDeveloperToken($this->developerToken);

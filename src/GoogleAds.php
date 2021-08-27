@@ -61,14 +61,14 @@ class GoogleAds
     }
 
     /**
-     * Set the ID of the customer to act on behalf of.
+     * Set the MCC ID of the customer to act on behalf of.
      *
-     * @param  string  $customerId
+     * @param  int|null  $loginCustomerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function setCustomerId(string $customerId): GoogleAds
+    public function setLoginCustomerId(?int $loginCustomerId): GoogleAds
     {
-        $this->customerId = $customerId;
+        $this->loginCustomerId = $loginCustomerId;
 
         return $this;
     }
@@ -108,7 +108,7 @@ class GoogleAds
      * @param  int|null  $linkedCustomerId
      * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
      */
-    protected function buildClient(string $refreshToken, int $linkedCustomerId = null): GoogleAdsClient
+    protected function buildClient(string $refreshToken, ?int $linkedCustomerId = null): GoogleAdsClient
     {
         $this->validateConfig();
 
@@ -130,7 +130,7 @@ class GoogleAds
      * @param  int|null  $linkedCustomerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function authorize(string $refreshToken, int $linkedCustomerId = null): GoogleAds
+    public function authorize(string $refreshToken, ?int $linkedCustomerId = null): GoogleAds
     {
         $this->googleAdsClient = $this->buildClient($refreshToken, $linkedCustomerId);
 

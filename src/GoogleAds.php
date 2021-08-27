@@ -3,8 +3,7 @@
 namespace JoelButcher\GoogleAds;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
-use Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder as V6ClientBuilder;
-use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder as V8ClientBuilder;
+use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder;
 
 class GoogleAds
 {
@@ -65,7 +64,7 @@ class GoogleAds
      * @param  string  $customerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function setCustomerId(string $customerId): \JoelButcher\GoogleAds\GoogleAds
+    public function setCustomerId(string $customerId): GoogleAds
     {
         $this->customerId = $customerId;
 
@@ -78,7 +77,7 @@ class GoogleAds
      * @param  string  $refreshToken
      * @return \Google\Auth\FetchAuthTokenInterface
      */
-    protected function getTokenBuilder(string $refreshToken): \Google\Auth\FetchAuthTokenInterface
+    protected function getTokenBuilder(string $refreshToken): FetchAuthTokenInterface
     {
         return (new OAuth2TokenBuilder())
             ->withClientId($this->clientId)
@@ -91,9 +90,9 @@ class GoogleAds
      * Get the Google Ads Client Builder for a given refresh token.
      *
      * @param  string  $refreshToken
-     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClientBuilder|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder
+     * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder
      */
-    protected function getClientBuilder(string $refreshToken)
+    protected function getClientBuilder(string $refreshToken): GoogleAdsClientBuilder
     {
         $class = PHP_VERSION > 7.2 && class_exists(V8ClientBuilder::class) ? V8ClientBuilder::class : V6ClientBuilder::class;
 
@@ -107,9 +106,9 @@ class GoogleAds
      *
      * @param  string  $refreshToken
      * @param  int|null  $linkedCustomerId
-     * @return \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
+     * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
      */
-    protected function buildClient(string $refreshToken, int $linkedCustomerId = null)
+    protected function buildClient(string $refreshToken, int $linkedCustomerId = null): GoogleAdsClientBuilder
     {
         $this->validateConfig();
 
@@ -131,7 +130,7 @@ class GoogleAds
      * @param  int|null  $linkedCustomerId
      * @return \JoelButcher\GoogleAds\GoogleAds
      */
-    public function authorize(string $refreshToken, int $linkedCustomerId = null): \JoelButcher\GoogleAds\GoogleAds
+    public function authorize(string $refreshToken, int $linkedCustomerId = null): GoogleAds
     {
         $this->googleAdsClient = $this->buildClient($refreshToken, $linkedCustomerId);
 
@@ -152,9 +151,10 @@ class GoogleAds
      * Validate that the services has been propertly configured.
      *
      * @return void
+     *
      * @throws \JoelButcher\GoogleAds\ConfigException
      */
-    private function validateConfig()
+    private function validateConfig(): void
     {
         if (! $this->clientId) {
             static::throwNewConfigException('The Client ID has not been configured.');
@@ -186,7 +186,7 @@ class GoogleAds
      *
      * @throws \JoelButcher\GoogleAds\ConfigException
      */
-    protected static function throwNewConfigException(string $message)
+    protected static function throwNewConfigException(string $message): void
     {
         throw new ConfigException($message);
     }

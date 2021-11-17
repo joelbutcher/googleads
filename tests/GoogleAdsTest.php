@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use Google\Ads\GoogleAds\V8\Services\AccountLinkServiceClient;
-use Google\Ads\GoogleAds\V8\Services\AdGroupServiceClient;
-use Google\Ads\GoogleAds\V8\Services\AdServiceClient;
-use Google\Ads\GoogleAds\V8\Services\CampaignServiceClient;
-use Google\Ads\GoogleAds\V8\Services\KeywordPlanAdGroupServiceClient;
-use Google\Ads\GoogleAds\V8\Services\KeywordPlanCampaignServiceClient;
+use Google\Ads\GoogleAds\V9\Services\AccountLinkServiceClient;
+use Google\Ads\GoogleAds\V9\Services\AdGroupServiceClient;
+use Google\Ads\GoogleAds\V9\Services\AdServiceClient;
+use Google\Ads\GoogleAds\V9\Services\CampaignServiceClient;
+use Google\Ads\GoogleAds\V9\Services\KeywordPlanAdGroupServiceClient;
+use Google\Ads\GoogleAds\V9\Services\KeywordPlanCampaignServiceClient;
 use JoelButcher\GoogleAds\GoogleAds;
 use JoelButcher\GoogleAds\GoogleAdsException;
 use PHPUnit\Framework\TestCase;

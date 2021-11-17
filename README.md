@@ -66,7 +66,7 @@ Now that you're all configured and authenticated, you can now begin interacting 
 ```
 
 ## Versioning
-Currently, we only support v6 of the client.
+Currently, we only support V9 of the Google Ads SDK.
 
 ## Changelog
 

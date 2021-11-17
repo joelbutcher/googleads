@@ -3,8 +3,8 @@
 namespace JoelButcher\GoogleAds;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
-use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient;
-use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder;
+use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClientBuilder;
 use Google\Auth\FetchAuthTokenInterface;
 
 class GoogleAds
@@ -14,7 +14,7 @@ class GoogleAds
     /**
      * The underlying GGoogle Ads client instance.
      *
-     * @var \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|\Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient|null
+     * @var \Google\Ads\GoogleAds\Lib\V6\GoogleAdsClient|\Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient|null
      */
     private $googleAdsClient = null;
 
@@ -99,7 +99,7 @@ class GoogleAds
      * Get the Google Ads Client Builder for a given refresh token.
      *
      * @param  string  $refreshToken
-     * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder
+     * @return \Google\Ads\GoogleAds\Lib\V9\GoogleAdsClientBuilder
      */
     protected function getClientBuilder(string $refreshToken): GoogleAdsClientBuilder
     {
@@ -113,7 +113,7 @@ class GoogleAds
      *
      * @param  string  $refreshToken
      * @param  int|null  $linkedCustomerId
-     * @return \Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient
+     * @return \Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient
      */
     protected function buildClient(string $refreshToken, ?int $linkedCustomerId = null): GoogleAdsClient
     {

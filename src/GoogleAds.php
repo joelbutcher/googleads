@@ -187,8 +187,7 @@ class GoogleAds
     /**
      * Throws a config exception for the given message.
      *
-     * @param string $message
-     *
+     * @param  string  $message
      * @return void
      *
      * @throws \JoelButcher\GoogleAds\ConfigException

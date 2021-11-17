@@ -114,6 +114,8 @@ class GoogleAds
      * @param  string  $refreshToken
      * @param  int|null  $linkedCustomerId
      * @return \Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient
+     *
+     * @throws \InvalidArgumentException
      */
     protected function buildClient(string $refreshToken, ?int $linkedCustomerId = null): GoogleAdsClient
     {
@@ -122,6 +124,8 @@ class GoogleAds
         $clientBuilder = is_null($linkedCustomerId)
             ? $this->getClientBuilder($refreshToken)->withLoginCustomerId($this->loginCustomerId)
             : $this->getClientBuilder($refreshToken)->withLinkedCustomerId($linkedCustomerId);
+
+        $clientBuilder->validate();
 
         return $clientBuilder->build();
     }

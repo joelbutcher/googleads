@@ -29,10 +29,10 @@ To configure the service, provide an array with your `client_id`, `client_secret
 
 ```php
   $config = [
-      'client_id' => '<your-app-client-id>
-      'client_secret' => '<your-app-client-secret>
-      'developer_token' => '<your-developer-token>
-      'login_customer_id' => '<your-app-client-id>
+      'client_id' => '<your-app-client-id>',
+      'client_secret' => '<your-app-client-secret>',
+      'developer_token' => '<your-developer-token>',
+      'login_customer_id' => '<your-app-client-id>',
   ];
 
   $googleAds = new GoogleAds($config);

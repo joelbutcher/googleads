@@ -119,13 +119,9 @@ class GoogleAds
     {
         $this->validateConfig();
 
-        $clientBuilder = $this->getClientBuilder($refreshToken);
-
-        if (is_null($linkedCustomerId)) {
-            $clientBuilder->withLoginCustomerId($this->loginCustomerId);
-        } else {
-            $clientBuilder->withLinkedCustomerId($linkedCustomerId);
-        }
+        $clientBuilder = is_null($linkedCustomerId)
+            ? $this->getClientBuilder($refreshToken)->withLoginCustomerId($this->loginCustomerId)
+            : $this->getClientBuilder($refreshToken)->withLinkedCustomerId($linkedCustomerId);
 
         return $clientBuilder->build();
     }

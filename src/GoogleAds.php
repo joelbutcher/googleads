@@ -81,7 +81,7 @@ use Google\Auth\FetchAuthTokenInterface;
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerClientLinkServiceClient getCustomerClientLinkServiceClient()
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerClientServiceClient getCustomerClientServiceClient()
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerConversionGoalServiceClient getCustomerConversionGoalServiceClient()
- * @method \Google\Ads\GoogleAds\V9\Services\   getCustomerCustomizerServiceClient()
+ * @method \Google\Ads\GoogleAds\V9\Services\ getCustomerCustomizerServiceClient()
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerExtensionSettingServiceClient getCustomerExtensionSettingServiceClient()
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerFeedServiceClient getCustomerFeedServiceClient()
  * @method \Google\Ads\GoogleAds\V9\Services\CustomerLabelServiceClient getCustomerLabelServiceClient()

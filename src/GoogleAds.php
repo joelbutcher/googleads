@@ -81,7 +81,7 @@ use Google\Auth\FetchAuthTokenInterface;
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerClientLinkServiceClient getCustomerClientLinkServiceClient()
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerClientServiceClient getCustomerClientServiceClient()
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerConversionGoalServiceClient getCustomerConversionGoalServiceClient()
- * @method \Google\Ads\GoogleAds\V6\Services\   getCustomerCustomizerServiceClient()
+ * @method \Google\Ads\GoogleAds\V6\Services\ getCustomerCustomizerServiceClient()
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerExtensionSettingServiceClient getCustomerExtensionSettingServiceClient()
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerFeedServiceClient getCustomerFeedServiceClient()
  * @method \Google\Ads\GoogleAds\V6\Services\CustomerLabelServiceClient getCustomerLabelServiceClient()
@@ -346,7 +346,7 @@ class GoogleAds
     /**
      * Throws a config exception for the given message.
      *
-     * @param string $message
+     * @param  string  $message
      * @return void
      *
      * @throws \JoelButcher\GoogleAds\ConfigException

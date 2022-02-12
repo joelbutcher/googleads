@@ -14,6 +14,6 @@ class Adapter extends AdapterAbstract
      */
     protected function getClientBuilder(): GoogleAdsClientBuilder
     {
-        return (new GoogleAdsClientBuilder);
+        return new GoogleAdsClientBuilder;
     }
 }

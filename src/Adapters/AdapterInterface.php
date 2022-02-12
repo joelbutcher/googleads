@@ -5,7 +5,6 @@ namespace JoelButcher\GoogleAds\Adapters;
 use Google\Ads\GoogleAds\Lib\V7\GoogleAdsClient as V7Client;
 use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient as V8Client;
 use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient as V9Client;
-use JoelButcher\GoogleAds\ConfigException;
 
 interface AdapterInterface
 {

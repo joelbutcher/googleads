@@ -90,9 +90,10 @@ class AdapterTest extends TestCase
     protected function buildAdapter(?array $config = null): AdapterInterface
     {
         $factory = new AdapterFactory;
+
         return $factory->build(
             SupportedVersions::VERSION_7,
-            !is_null($config) ? $config : $this->getDefaultConfig()
+            ! is_null($config) ? $config : $this->getDefaultConfig()
         );
     }
 }

@@ -13,6 +13,7 @@ final class AdapterFactory
      * @param  int  $sdkVersion
      * @param  array  $config
      * @return AdapterInterface
+     *
      * @throws ConfigException
      */
     public static function build(int $sdkVersion, array $config = []): AdapterInterface

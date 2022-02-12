@@ -391,6 +391,7 @@ final class GoogleAds
      * @param  string  $logLevel
      * @param  LoggerInterface|null  $logger
      * @return void
+     *
      * @throws ConfigException
      */
     public function __construct(
@@ -401,8 +402,7 @@ final class GoogleAds
         string $transportProtocol = 'rest',
         ?LoggerInterface $logger = null,
         string $logLevel = 'info'
-    )
-    {
+    ) {
         $this->validateConfig($clientId, $clientSecret, $developerToken, $transportProtocol, $logLevel);
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
@@ -426,6 +426,7 @@ final class GoogleAds
      * Get the adapter for the given SDK Version.
      *
      * @return AdapterInterface
+     *
      * @throws ConfigException
      */
     protected function getAdapter(): AdapterInterface
@@ -450,6 +451,7 @@ final class GoogleAds
      * @param  string  $refreshToken
      * @param  int|null  $loginCustomerId
      * @return GoogleAds
+     *
      * @throws ConfigException
      */
     public function authorize(string $refreshToken, ?int $loginCustomerId = null): GoogleAds

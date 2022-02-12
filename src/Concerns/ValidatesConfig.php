@@ -39,13 +39,13 @@ trait ValidatesConfig
             static::throwNewConfigException('A developer token has not been specified.');
         }
 
-        if (!in_array($transportProtocol, ['rest', 'grpc'])) {
+        if (! in_array($transportProtocol, ['rest', 'grpc'])) {
             static::throwNewConfigException('Invalid transport protocol, please use one of "rest" or "grpc".');
         }
 
-        if (!in_array(strtolower($logLevel), [
-                LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR,
-                LogLevel::WARNING, LogLevel::NOTICE, LogLevel::INFO, LogLevel::DEBUG]
+        if (! in_array(strtolower($logLevel), [
+            LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR,
+            LogLevel::WARNING, LogLevel::NOTICE, LogLevel::INFO, LogLevel::DEBUG, ]
         )) {
             static::throwNewConfigException('Invalid log level, please use a support PSR log level.');
         }

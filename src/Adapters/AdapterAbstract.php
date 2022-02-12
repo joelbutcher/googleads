@@ -11,7 +11,6 @@ use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient as V9Client;
 use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClientBuilder as V9ClientBuilder;
 use Google\Auth\FetchAuthTokenInterface;
 use JoelButcher\GoogleAds\Concerns\ValidatesConfig;
-use JoelButcher\GoogleAds\ConfigException;
 use Psr\Log\LoggerInterface;
 
 abstract class AdapterAbstract implements AdapterInterface

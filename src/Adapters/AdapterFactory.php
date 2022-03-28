@@ -4,6 +4,7 @@ namespace JoelButcher\GoogleAds\Adapters;
 
 use JoelButcher\GoogleAds\ConfigException;
 use JoelButcher\GoogleAds\SupportedVersions;
+use ReflectionClass;
 
 final class AdapterFactory
 {
@@ -18,20 +19,14 @@ final class AdapterFactory
      */
     public static function build(int $sdkVersion, array $config = []): AdapterInterface
     {
-        switch ($sdkVersion) {
-            case SupportedVersions::VERSION_7:
-                $adapter = new V7\Adapter(...$config);
-                break;
-            case SupportedVersions::VERSION_8:
-                $adapter = new V8\Adapter(...$config);
-                break;
-            case SupportedVersions::VERSION_9:
-                $adapter = new V9\Adapter(...$config);
-                break;
-            default:
-                throw new \InvalidArgumentException("This Google Ads SDK version ({$sdkVersion}) is not supported");
+        $constants = (new ReflectionClass(SupportedVersions::class))->getConstants();
+
+        if (! in_array($sdkVersion, $constants)) {
+            throw new \InvalidArgumentException("This Google Ads SDK version ({$sdkVersion}) is not supported");
         }
 
-        return $adapter;
+        $className = __NAMESPACE__ . "\V{$sdkVersion}\Adapter";
+
+        return new $className(...$config);
     }
 }

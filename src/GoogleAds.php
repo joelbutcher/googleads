@@ -398,7 +398,7 @@ final class GoogleAds
         string $clientId,
         string $clientSecret,
         string $developerToken,
-        int $sdkVersion = SupportedVersions::VERSION_9,
+        int $sdkVersion = SupportedVersions::VERSION_10,
         string $transportProtocol = 'rest',
         ?LoggerInterface $logger = null,
         string $logLevel = 'info'

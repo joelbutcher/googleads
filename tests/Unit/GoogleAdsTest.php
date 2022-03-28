@@ -2,6 +2,12 @@
 
 namespace Tests\Unit;
 
+use Google\Ads\GoogleAds\V10\Services\AccountLinkServiceClient as V10AccountLinkServiceClient;
+use Google\Ads\GoogleAds\V10\Services\AdGroupServiceClient as V10AdGroupServiceClient;
+use Google\Ads\GoogleAds\V10\Services\AdServiceClient as V10AdServiceClient;
+use Google\Ads\GoogleAds\V10\Services\CampaignServiceClient as V10CampaignServiceClient;
+use Google\Ads\GoogleAds\V10\Services\KeywordPlanAdGroupServiceClient as V10KeywordPlanAdGroupServiceClient;
+use Google\Ads\GoogleAds\V10\Services\KeywordPlanCampaignServiceClient as V10KeywordPlanCampaignServiceClient;
 use Google\Ads\GoogleAds\V8\Services\AccountLinkServiceClient as V8AccountLinkServiceClient;
 use Google\Ads\GoogleAds\V8\Services\AdGroupServiceClient as V8AdGroupServiceClient;
 use Google\Ads\GoogleAds\V8\Services\AdServiceClient as V8AdServiceClient;
@@ -14,12 +20,6 @@ use Google\Ads\GoogleAds\V9\Services\AdServiceClient as V9AdServiceClient;
 use Google\Ads\GoogleAds\V9\Services\CampaignServiceClient as V9CampaignServiceClient;
 use Google\Ads\GoogleAds\V9\Services\KeywordPlanAdGroupServiceClient as V9KeywordPlanAdGroupServiceClient;
 use Google\Ads\GoogleAds\V9\Services\KeywordPlanCampaignServiceClient as V9KeywordPlanCampaignServiceClient;
-use Google\Ads\GoogleAds\V10\Services\AccountLinkServiceClient as V10AccountLinkServiceClient;
-use Google\Ads\GoogleAds\V10\Services\AdGroupServiceClient as V10AdGroupServiceClient;
-use Google\Ads\GoogleAds\V10\Services\AdServiceClient as V10AdServiceClient;
-use Google\Ads\GoogleAds\V10\Services\CampaignServiceClient as V10CampaignServiceClient;
-use Google\Ads\GoogleAds\V10\Services\KeywordPlanAdGroupServiceClient as V10KeywordPlanAdGroupServiceClient;
-use Google\Ads\GoogleAds\V10\Services\KeywordPlanCampaignServiceClient as V10KeywordPlanCampaignServiceClient;
 use JoelButcher\GoogleAds\GoogleAds;
 use JoelButcher\GoogleAds\GoogleAdsException;
 use JoelButcher\GoogleAds\SupportedVersions;

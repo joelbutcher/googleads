@@ -25,7 +25,7 @@ final class AdapterFactory
             throw new \InvalidArgumentException("This Google Ads SDK version ({$sdkVersion}) is not supported");
         }
 
-        $className = __NAMESPACE__ . "\V{$sdkVersion}\Adapter";
+        $className = __NAMESPACE__."\V{$sdkVersion}\Adapter";
 
         return new $className(...$config);
     }

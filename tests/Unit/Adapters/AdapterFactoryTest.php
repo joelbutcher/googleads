@@ -3,9 +3,9 @@
 namespace Tests\Unit\Adapters;
 
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
+use JoelButcher\GoogleAds\Adapters\V10\Adapter as V10Adapter;
 use JoelButcher\GoogleAds\Adapters\V8\Adapter as V8Adapter;
 use JoelButcher\GoogleAds\Adapters\V9\Adapter as V9Adapter;
-use JoelButcher\GoogleAds\Adapters\V10\Adapter as V10Adapter;
 use JoelButcher\GoogleAds\SupportedVersions;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\HasDefaultConfig;

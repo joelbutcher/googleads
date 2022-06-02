@@ -3,8 +3,8 @@
 namespace JoelButcher\GoogleAds\Adapters;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
-use Google\Ads\GoogleAds\Lib\V7\GoogleAdsClient as V7Client;
-use Google\Ads\GoogleAds\Lib\V7\GoogleAdsClientBuilder as V7ClientBuilder;
+use Google\Ads\GoogleAds\Lib\V10\GoogleAdsClient as V10Client;
+use Google\Ads\GoogleAds\Lib\V10\GoogleAdsClientBuilder as V10ClientBuilder;
 use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClient as V8Client;
 use Google\Ads\GoogleAds\Lib\V8\GoogleAdsClientBuilder as V8ClientBuilder;
 use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClient as V9Client;
@@ -92,7 +92,7 @@ abstract class AdapterAbstract implements AdapterInterface
      *
      * @param  string  $refreshToken
      * @param  int|null  $loginCustomerId
-     * @return V7Client|V8Client|V9Client
+     * @return V8Client|V9Client|V10Client
      */
     public function getClient(string $refreshToken, ?int $loginCustomerId = null)
     {
@@ -116,7 +116,7 @@ abstract class AdapterAbstract implements AdapterInterface
     /**
      * Get the client builder used by the SDK adapter version.
      *
-     * @return V7ClientBuilder|V8ClientBuilder|V9ClientBuilder
+     * @return V8ClientBuilder|V9ClientBuilder|V10ClientBuilder
      */
     abstract protected function getClientBuilder();
 

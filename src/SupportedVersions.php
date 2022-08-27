@@ -4,9 +4,8 @@ namespace JoelButcher\GoogleAds;
 
 final class SupportedVersions
 {
-    public const VERSION_8 = 8;
-    public const VERSION_9 = 9;
     public const VERSION_10 = 10;
+    public const VERSION_11 = 11;
 
     /**
      * Get the list of all supported version.
@@ -16,9 +15,8 @@ final class SupportedVersions
     public static function getAllVersions(): array
     {
         return [
-            self::VERSION_8,
-            self::VERSION_9,
             self::VERSION_10,
+            self::VERSION_11,
         ];
     }
 }

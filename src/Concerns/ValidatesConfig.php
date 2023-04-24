@@ -2,7 +2,6 @@
 
 namespace JoelButcher\GoogleAds\Concerns;
 
-use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
 trait ValidatesConfig
@@ -11,14 +10,6 @@ trait ValidatesConfig
 
     /**
      * Validate the given config items.
-     *
-     * @param  string|null  $clientId
-     * @param  string|null  $clientSecret
-     * @param  string|null  $developerToken
-     * @param  string  $transportProtocol
-     * @param  LoggerInterface|null  $logger
-     * @param  string  $logLevel
-     * @return void
      */
     protected static function validateConfig(
         ?string $clientId = null,

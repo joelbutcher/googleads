@@ -2,16 +2,16 @@
 
 namespace JoelButcher\GoogleAds;
 
-use Google\Ads\GoogleAds\Lib\V10\GoogleAdsClient as V10GoogleAdsClient;
-use Google\Ads\GoogleAds\Lib\V11\GoogleAdsClient as V11GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient as V12GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClient as V13GoogleAdsClient;
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
 use JoelButcher\GoogleAds\Adapters\AdapterInterface;
 use JoelButcher\GoogleAds\Concerns\ValidatesConfig;
 use Psr\Log\LoggerInterface;
 
 /**
- * @mixin V10GoogleAdsClient
- * @mixin V11GoogleAdsClient
+ * @mixin V12GoogleAdsClient
+ * @mixin V13GoogleAdsClient
  */
 final class GoogleAds
 {
@@ -20,106 +20,37 @@ final class GoogleAds
 
     /**
      * The underlying Google Ads client instance.
-     *
-     * @var V10GoogleAdsClient|V11GoogleAdsClient|null
      */
-    private $googleAdsClient = null;
+    private V12GoogleAdsClient|V13GoogleAdsClient|null $googleAdsClient = null;
 
     /**
      * The adapter used to interact with a given SDK version.
-     *
-     * @var AdapterInterface|null
      */
-    private $adapter = null;
+    private ?AdapterInterface $adapter = null;
 
-    /**
-     * The applications Client ID.
-     *
-     * @var string
-     */
-    private $clientId;
-
-    /**
-     * The applications Client Secret.
-     *
-     * @var string
-     */
-    private $clientSecret;
-
-    /**
-     * The applications Developer Token.
-     *
-     * @var string
-     */
-    private $developerToken;
-
-    /**
-     * The transport protocol used by the client.
-     *
-     * @var string
-     */
-    protected $transportProtocol = 'rest';
-
-    /**
-     * The minimum log level we should be logging.
-     *
-     * @var string
-     */
-    protected $logLevel = 'info';
-
-    /**
-     * The underlying logger implementation.
-     *
-     * @var LoggerInterface|null
-     */
-    protected $logger = null;
-
-    /**
-     * Create a new Google Ads service instance.
-     *
-     * @param  string  $clientId
-     * @param  string  $clientSecret
-     * @param  string  $developerToken
-     * @param  int  $sdkVersion
-     * @param  string  $transportProtocol
-     * @param  string  $logLevel
-     * @param  LoggerInterface|null  $logger
-     * @return void
-     *
-     * @throws ConfigException
-     */
     public function __construct(
-        string $clientId,
-        string $clientSecret,
-        string $developerToken,
-        int $sdkVersion = SupportedVersions::VERSION_11,
-        string $transportProtocol = 'rest',
-        ?LoggerInterface $logger = null,
-        string $logLevel = 'info'
+        private string $clientId,
+        private string $clientSecret,
+        private string $developerToken,
+        private int $sdkVersion = SupportedVersions::VERSION_13,
+        private string $transportProtocol = 'rest',
+        private ?LoggerInterface $logger = null,
+        private string $logLevel = 'INFO'
     ) {
         $this->validateConfig($clientId, $clientSecret, $developerToken, $transportProtocol, $logLevel);
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
-        $this->developerToken = $developerToken;
-        $this->transportProtocol = $transportProtocol;
-        $this->logger = $logger;
-        $this->logLevel = strtoupper($logLevel);
+        $this->logLevel = strtoupper($this->logLevel);
 
         if (! in_array($sdkVersion, SupportedVersions::getAllVersions())) {
             $this->throwNewConfigException(sprintf(
-                'Unsupported version "%s". Exepected one of: "%s".',
+                'Unsupported version "%s". Expected one of: "%s".',
                 $sdkVersion,
                 implode(', ', SupportedVersions::getAllVersions())
             ));
         }
-
-        $this->sdkVersion = $sdkVersion;
     }
 
     /**
      * Get the adapter for the given SDK Version.
-     *
-     * @return AdapterInterface
      *
      * @throws ConfigException
      */
@@ -142,10 +73,6 @@ final class GoogleAds
     /**
      * Authorize the given access token and optional linked customer id with the Google Ads service.
      *
-     * @param  string  $refreshToken
-     * @param  int|null  $loginCustomerId
-     * @return GoogleAds
-     *
      * @throws ConfigException
      */
     public function authorize(string $refreshToken, ?int $loginCustomerId = null): GoogleAds
@@ -157,8 +84,6 @@ final class GoogleAds
 
     /**
      * Determine if the services has been authorized.
-     *
-     * @return bool
      */
     public function isAuthorized(): bool
     {
@@ -167,14 +92,10 @@ final class GoogleAds
 
     /**
      * Handle dynamic method calls into the model.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
      */
-    public function __call($method, $parameters)
+    public function __call(string $method, array $parameters): mixed
     {
-        if (in_array($method, ['authorize'])) {
+        if ($method == 'authorize') {
             return $this->{$method}(...$parameters);
         }
 

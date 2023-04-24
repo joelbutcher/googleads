@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\Adapters\V10;
+namespace Tests\Unit\Adapters\V12;
 
-use Google\Ads\GoogleAds\Lib\V10\GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient;
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
 use JoelButcher\GoogleAds\Adapters\AdapterInterface;
 use JoelButcher\GoogleAds\ConfigException;
@@ -92,7 +92,7 @@ class AdapterTest extends TestCase
         $factory = new AdapterFactory;
 
         return $factory->build(
-            SupportedVersions::VERSION_10,
+            SupportedVersions::VERSION_12,
             ! is_null($config) ? $config : $this->getDefaultConfig()
         );
     }

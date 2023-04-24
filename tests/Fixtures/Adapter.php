@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures;
 
-use Google\Ads\GoogleAds\Lib\V9\GoogleAdsClientBuilder;
+use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClientBuilder;
 use JoelButcher\GoogleAds\Adapters\AdapterAbstract;
 
 class Adapter extends AdapterAbstract

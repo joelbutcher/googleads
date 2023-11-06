@@ -2,16 +2,18 @@
 
 namespace JoelButcher\GoogleAds;
 
-use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient as V12GoogleAdsClient;
 use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClient as V13GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V14\GoogleAdsClient as V14GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClient as V15GoogleAdsClient;
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
 use JoelButcher\GoogleAds\Adapters\AdapterInterface;
 use JoelButcher\GoogleAds\Concerns\ValidatesConfig;
 use Psr\Log\LoggerInterface;
 
 /**
- * @mixin V12GoogleAdsClient
  * @mixin V13GoogleAdsClient
+ * @mixin V14GoogleAdsClient
+ * @mixin V15GoogleAdsClient
  */
 final class GoogleAds
 {
@@ -21,7 +23,7 @@ final class GoogleAds
     /**
      * The underlying Google Ads client instance.
      */
-    private V12GoogleAdsClient|V13GoogleAdsClient|null $googleAdsClient = null;
+    private V13GoogleAdsClient|V14GoogleAdsClient|V15GoogleAdsClient|null $googleAdsClient = null;
 
     /**
      * The adapter used to interact with a given SDK version.

@@ -3,10 +3,12 @@
 namespace JoelButcher\GoogleAds\Adapters;
 
 use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
-use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient as V12Client;
-use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClientBuilder as V12ClientBuilder;
 use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClient as V13Client;
 use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClientBuilder as V13ClientBuilder;
+use Google\Ads\GoogleAds\Lib\V14\GoogleAdsClient as V14Client;
+use Google\Ads\GoogleAds\Lib\V14\GoogleAdsClientBuilder as V14ClientBuilder;
+use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClient as V15Client;
+use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClientBuilder as V15ClientBuilder;
 use Google\Auth\FetchAuthTokenInterface;
 use JoelButcher\GoogleAds\Concerns\ValidatesConfig;
 use Psr\Log\LoggerInterface;
@@ -33,7 +35,7 @@ abstract class AdapterAbstract implements AdapterInterface
     /**
      * Build the Google Ads Client for the supported version.
      */
-    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V12Client|V13Client
+    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V13Client|V14Client|V15Client
     {
         $clientBuilder = $this->getClientBuilder()
             ->withDeveloperToken($this->developerToken)
@@ -55,7 +57,7 @@ abstract class AdapterAbstract implements AdapterInterface
     /**
      * Get the client builder used by the SDK adapter version.
      */
-    abstract protected function getClientBuilder(): V12ClientBuilder|V13ClientBuilder;
+    abstract protected function getClientBuilder(): V13ClientBuilder|V14ClientBuilder|V15ClientBuilder;
 
     /**
      * Get the OAuth2 Token builder for created a client builder.

@@ -3,7 +3,6 @@
 namespace Tests\Unit\Adapters;
 
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
-use JoelButcher\GoogleAds\Adapters\V13\Adapter as V13Adapter;
 use JoelButcher\GoogleAds\Adapters\V14\Adapter as V14Adapter;
 use JoelButcher\GoogleAds\Adapters\V15\Adapter as V15Adapter;
 use JoelButcher\GoogleAds\SupportedVersions;
@@ -33,9 +32,6 @@ class AdapterFactoryTest extends TestCase
     {
         $factory = new AdapterFactory;
         $config = $this->getDefaultConfig();
-
-        $v11Adapter = $factory->build(SupportedVersions::VERSION_13, $config);
-        $this->assertInstanceOf(V13Adapter::class, $v11Adapter);
 
         $v10Adapter = $factory->build(SupportedVersions::VERSION_14, $config);
         $this->assertInstanceOf(V14Adapter::class, $v10Adapter);

@@ -2,12 +2,6 @@
 
 namespace Tests\Unit;
 
-use Google\Ads\GoogleAds\V13\Services\AccountLinkServiceClient as V13AccountLinkServiceClient;
-use Google\Ads\GoogleAds\V13\Services\AdGroupServiceClient as V13AdGroupServiceClient;
-use Google\Ads\GoogleAds\V13\Services\AdServiceClient as V13AdServiceClient;
-use Google\Ads\GoogleAds\V13\Services\CampaignServiceClient as V13CampaignServiceClient;
-use Google\Ads\GoogleAds\V13\Services\KeywordPlanAdGroupServiceClient as V13KeywordPlanAdGroupServiceClient;
-use Google\Ads\GoogleAds\V13\Services\KeywordPlanCampaignServiceClient as V13KeywordPlanCampaignServiceClient;
 use Google\Ads\GoogleAds\V14\Services\AccountLinkServiceClient as V14AccountLinkServiceClient;
 use Google\Ads\GoogleAds\V14\Services\AdGroupServiceClient as V14AdGroupServiceClient;
 use Google\Ads\GoogleAds\V14\Services\AdServiceClient as V14AdServiceClient;
@@ -79,66 +73,6 @@ class GoogleAdsTest extends TestCase
         $this->assertArrayHasKey('login-customer-id', $clientConfigOptions);
         $this->assertIsString($clientConfigOptions['login-customer-id']);
         $this->assertSame('12345678', $clientConfigOptions['login-customer-id']);
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13AccountLinkServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13AccountLinkServiceClient::class, $googleAds->getAccountLinkServiceClient());
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13CampaignServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13CampaignServiceClient::class, $googleAds->getCampaignServiceClient());
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13AdGroupServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13AdGroupServiceClient::class, $googleAds->getAdGroupServiceClient());
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13AdServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13AdServiceClient::class, $googleAds->getAdServiceClient());
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13KeywordPlanCampaignServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13KeywordPlanCampaignServiceClient::class, $googleAds->getKeywordPlanCampaignServiceClient());
-    }
-
-    /**
-     * @test
-     */
-    public function itCanRetrieveV13KeywordPlanAdGroupServiceClient()
-    {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
-        $googleAds->authorize('token', 12345678);
-        $this->assertInstanceOf(V13KeywordPlanAdGroupServiceClient::class, $googleAds->getKeywordPlanAdGroupServiceClient());
     }
 
     /**

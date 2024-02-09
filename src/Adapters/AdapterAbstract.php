@@ -35,7 +35,7 @@ abstract class AdapterAbstract implements AdapterInterface
     /**
      * Build the Google Ads Client for the supported version.
      */
-    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V13Client|V14Client|V15Client
+    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V14Client|V15Client
     {
         $clientBuilder = $this->getClientBuilder()
             ->withDeveloperToken($this->developerToken)
@@ -57,7 +57,7 @@ abstract class AdapterAbstract implements AdapterInterface
     /**
      * Get the client builder used by the SDK adapter version.
      */
-    abstract protected function getClientBuilder(): V13ClientBuilder|V14ClientBuilder|V15ClientBuilder;
+    abstract protected function getClientBuilder(): V14ClientBuilder|V15ClientBuilder;
 
     /**
      * Get the OAuth2 Token builder for created a client builder.

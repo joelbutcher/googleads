@@ -8,12 +8,12 @@ use Google\Ads\GoogleAds\V15\Services\AdServiceClient as V15AdServiceClient;
 use Google\Ads\GoogleAds\V15\Services\CampaignServiceClient as V15CampaignServiceClient;
 use Google\Ads\GoogleAds\V15\Services\KeywordPlanAdGroupServiceClient as V15KeywordPlanAdGroupServiceClient;
 use Google\Ads\GoogleAds\V15\Services\KeywordPlanCampaignServiceClient as V15KeywordPlanCampaignServiceClient;
-use Google\Ads\GoogleAds\V16\Services\AccountLinkServiceClient as V16AccountLinkServiceClient;
-use Google\Ads\GoogleAds\V16\Services\AdGroupServiceClient as V16AdGroupServiceClient;
-use Google\Ads\GoogleAds\V16\Services\AdServiceClient as V16AdServiceClient;
-use Google\Ads\GoogleAds\V16\Services\CampaignServiceClient as V16CampaignServiceClient;
-use Google\Ads\GoogleAds\V16\Services\KeywordPlanAdGroupServiceClient as V16KeywordPlanAdGroupServiceClient;
-use Google\Ads\GoogleAds\V16\Services\KeywordPlanCampaignServiceClient as V16KeywordPlanCampaignServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\AccountLinkServiceClient as V16AccountLinkServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\AdGroupServiceClient as V16AdGroupServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\AdServiceClient as V16AdServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\CampaignServiceClient as V16CampaignServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\KeywordPlanAdGroupServiceClient as V16KeywordPlanAdGroupServiceClient;
+use Google\Ads\GoogleAds\V16\Services\Client\KeywordPlanCampaignServiceClient as V16KeywordPlanCampaignServiceClient;
 use JoelButcher\GoogleAds\GoogleAds;
 use JoelButcher\GoogleAds\GoogleAdsException;
 use JoelButcher\GoogleAds\SupportedVersions;
@@ -80,7 +80,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15AccountLinkServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15AccountLinkServiceClient::class, $googleAds->getAccountLinkServiceClient());
     }
@@ -90,7 +90,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15CampaignServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15CampaignServiceClient::class, $googleAds->getCampaignServiceClient());
     }
@@ -100,7 +100,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15AdGroupServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15AdGroupServiceClient::class, $googleAds->getAdGroupServiceClient());
     }
@@ -110,7 +110,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15AdServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15AdServiceClient::class, $googleAds->getAdServiceClient());
     }
@@ -120,7 +120,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15KeywordPlanCampaignServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15KeywordPlanCampaignServiceClient::class, $googleAds->getKeywordPlanCampaignServiceClient());
     }
@@ -130,7 +130,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV15KeywordPlanAdGroupServiceClient()
     {
-        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_15]));
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig()));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V15KeywordPlanAdGroupServiceClient::class, $googleAds->getKeywordPlanAdGroupServiceClient());
     }
@@ -140,7 +140,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16AccountLinkServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16AccountLinkServiceClient::class, $googleAds->getAccountLinkServiceClient());
     }
@@ -150,7 +150,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16CampaignServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16CampaignServiceClient::class, $googleAds->getCampaignServiceClient());
     }
@@ -160,7 +160,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16AdGroupServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16AdGroupServiceClient::class, $googleAds->getAdGroupServiceClient());
     }
@@ -170,7 +170,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16AdServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16AdServiceClient::class, $googleAds->getAdServiceClient());
     }
@@ -180,7 +180,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16KeywordPlanCampaignServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16KeywordPlanCampaignServiceClient::class, $googleAds->getKeywordPlanCampaignServiceClient());
     }
@@ -190,7 +190,7 @@ class GoogleAdsTest extends TestCase
      */
     public function itCanRetrieveV16KeywordPlanAdGroupServiceClient()
     {
-        $googleAds = new GoogleAds(...$this->getDefaultConfig());
+        $googleAds = new GoogleAds(...array_merge($this->getDefaultConfig(), [SupportedVersions::VERSION_16]));
         $googleAds->authorize('token', 12345678);
         $this->assertInstanceOf(V16KeywordPlanAdGroupServiceClient::class, $googleAds->getKeywordPlanAdGroupServiceClient());
     }

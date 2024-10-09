@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Adapters\V15;
 
-use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClient;
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
 use JoelButcher\GoogleAds\Adapters\AdapterInterface;
 use JoelButcher\GoogleAds\ConfigException;

@@ -2,16 +2,16 @@
 
 namespace JoelButcher\GoogleAds;
 
-use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClient as V15GoogleAdsClient;
 use Google\Ads\GoogleAds\Lib\V16\GoogleAdsClient as V16GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V17\GoogleAdsClient as V17GoogleAdsClient;
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
 use JoelButcher\GoogleAds\Adapters\AdapterInterface;
 use JoelButcher\GoogleAds\Concerns\ValidatesConfig;
 use Psr\Log\LoggerInterface;
 
 /**
- * @mixin V15GoogleAdsClient
  * @mixin V16GoogleAdsClient
+ * @mixin V17GoogleAdsClient
  */
 final class GoogleAds
 {
@@ -21,7 +21,7 @@ final class GoogleAds
     /**
      * The underlying Google Ads client instance.
      */
-    private V15GoogleAdsClient|V16GoogleAdsClient|null $googleAdsClient = null;
+    private V16GoogleAdsClient|V17GoogleAdsClient|null $googleAdsClient = null;
 
     /**
      * The adapter used to interact with a given SDK version.
@@ -32,7 +32,7 @@ final class GoogleAds
         private string $clientId,
         private string $clientSecret,
         private string $developerToken,
-        private int $sdkVersion = SupportedVersions::VERSION_15,
+        private int $sdkVersion = SupportedVersions::VERSION_17,
         private string $transportProtocol = 'rest',
         private ?LoggerInterface $logger = null,
         private string $logLevel = 'INFO'

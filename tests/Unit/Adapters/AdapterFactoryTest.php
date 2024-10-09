@@ -3,8 +3,8 @@
 namespace Tests\Unit\Adapters;
 
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
-use JoelButcher\GoogleAds\Adapters\V15\Adapter as V15Adapter;
 use JoelButcher\GoogleAds\Adapters\V16\Adapter as V16Adapter;
+use JoelButcher\GoogleAds\Adapters\V17\Adapter as V17Adapter;
 use JoelButcher\GoogleAds\SupportedVersions;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\HasDefaultConfig;
@@ -41,8 +41,8 @@ class AdapterFactoryTest extends TestCase
     public static function sdkVersionDataProvider(): array
     {
         return [
-            [SupportedVersions::VERSION_15, V15Adapter::class],
             [SupportedVersions::VERSION_16, V16Adapter::class],
+            [SupportedVersions::VERSION_17, V17Adapter::class],
         ];
     }
 }

@@ -2,14 +2,13 @@
 
 namespace JoelButcher\GoogleAds\Adapters;
 
-use Google\Ads\GoogleAds\Lib\V13\GoogleAdsClient as V13Client;
-use Google\Ads\GoogleAds\Lib\V14\GoogleAdsClient as V14Client;
 use Google\Ads\GoogleAds\Lib\V15\GoogleAdsClient as V15Client;
+use Google\Ads\GoogleAds\Lib\V16\GoogleAdsClient as V16Client;
 
 interface AdapterInterface
 {
     /**
      * Build the Google Ads Client for the supported version.
      */
-    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V13Client|V14Client|V15Client;
+    public function getClient(string $refreshToken, ?int $loginCustomerId = null): V15Client|V16Client;
 }

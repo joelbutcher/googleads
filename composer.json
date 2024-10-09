@@ -14,8 +14,8 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "googleads/google-ads-php": "^21.0"
+        "php": "^8.1",
+        "googleads/google-ads-php": "^23"
     },
     "require-dev": {
         "mockery/mockery": "^1.5",

@@ -92,7 +92,7 @@ class AdapterTest extends TestCase
         $factory = new AdapterFactory;
 
         return $factory->build(
-            SupportedVersions::VERSION_13,
+            SupportedVersions::VERSION_15,
             ! is_null($config) ? $config : $this->getDefaultConfig()
         );
     }

@@ -3,9 +3,8 @@
 namespace Tests\Unit\Adapters;
 
 use JoelButcher\GoogleAds\Adapters\AdapterFactory;
-use JoelButcher\GoogleAds\Adapters\V13\Adapter as V13Adapter;
-use JoelButcher\GoogleAds\Adapters\V14\Adapter as V14Adapter;
 use JoelButcher\GoogleAds\Adapters\V15\Adapter as V15Adapter;
+use JoelButcher\GoogleAds\Adapters\V16\Adapter as V16Adapter;
 use JoelButcher\GoogleAds\SupportedVersions;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\HasDefaultConfig;
@@ -28,19 +27,22 @@ class AdapterFactoryTest extends TestCase
 
     /**
      * @test
+     * @dataProvider sdkVersionDataProvider
      */
-    public function itReturnsExpectedAdapterInstance(): void
+    public function itReturnsExpectedAdapterInstance(int $version, string $expectedAdapterClass): void
     {
         $factory = new AdapterFactory;
         $config = $this->getDefaultConfig();
 
-        $v11Adapter = $factory->build(SupportedVersions::VERSION_13, $config);
-        $this->assertInstanceOf(V13Adapter::class, $v11Adapter);
+        $adapter = $factory->build($version, $config);
+        $this->assertInstanceOf($expectedAdapterClass, $adapter);
+    }
 
-        $v10Adapter = $factory->build(SupportedVersions::VERSION_14, $config);
-        $this->assertInstanceOf(V14Adapter::class, $v10Adapter);
-
-        $v10Adapter = $factory->build(SupportedVersions::VERSION_15, $config);
-        $this->assertInstanceOf(V15Adapter::class, $v10Adapter);
+    public static function sdkVersionDataProvider(): array
+    {
+        return [
+            [SupportedVersions::VERSION_15, V15Adapter::class],
+            [SupportedVersions::VERSION_16, V16Adapter::class],
+        ];
     }
 }

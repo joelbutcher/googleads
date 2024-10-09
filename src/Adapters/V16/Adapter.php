@@ -1,8 +1,8 @@
 <?php
 
-namespace JoelButcher\GoogleAds\Adapters\V14;
+namespace JoelButcher\GoogleAds\Adapters\V16;
 
-use Google\Ads\GoogleAds\Lib\V14\GoogleAdsClientBuilder;
+use Google\Ads\GoogleAds\Lib\V16\GoogleAdsClientBuilder;
 use JoelButcher\GoogleAds\Adapters\AdapterAbstract;
 
 class Adapter extends AdapterAbstract
